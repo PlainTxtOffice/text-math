@@ -2,6 +2,10 @@
 
 <!-- Authoring guidance: dev-docs/specs/README_SPEC.instructions.md -->
 <!-- rumdl-disable MD033 MD041 -->
+<p align="center">
+  <img src="assets/icons/text_math-github.svg" alt="Text Math app icon" width="96">
+</p>
+
 <h1 align="center">Text Math</h1>
 
 <p align="center">

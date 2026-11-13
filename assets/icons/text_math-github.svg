@@ -1,6 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- Generated from text_math.svg for GitHub; background corner radius: 171 units. -->
   <title>Text Math</title>
-  <path id="background" fill="#F5F1E1" data-dark="#0E191B" data-tinted="#000000" d="M0 0H1024V1024H0Z"/>
+  <path id="background" fill="#F5F1E1" data-dark="#0E191B" data-tinted="#000000" d="M171 0H853A171 171 0 0 1 1024 171V853A171 171 0 0 1 853 1024H171A171 171 0 0 1 0 853V171A171 171 0 0 1 171 0Z"/>
   <path fill="#EB6020" data-tinted="#FFFFFF" d="M244 158H404A86 86 0 0 1 490 244V404A86 86 0 0 1 404 490H244A86 86 0 0 1 158 404V244A86 86 0 0 1 244 158Z"/>
   <path fill="#21827C" data-tinted="#B8B8B8" d="M620 158H780A86 86 0 0 1 866 244V404A86 86 0 0 1 780 490H620A86 86 0 0 1 534 404V244A86 86 0 0 1 620 158Z"/>
   <path fill="#1A2E32" data-dark="#F5F1E1" data-tinted="#808080" d="M244 534H404A86 86 0 0 1 490 620V780A86 86 0 0 1 404 866H244A86 86 0 0 1 158 780V620A86 86 0 0 1 244 534Z"/>
