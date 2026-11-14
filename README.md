@@ -9,7 +9,7 @@
 <h1 align="center">Text Math</h1>
 
 <p align="center">
-  An app for anyone who wants to build mental arithmetic
+  An app for teens and adults who want to build mental arithmetic
   fluency and number sense by solving problems in their head and comparing
   more than one way to reach the answer.
 </p>
@@ -20,6 +20,7 @@
 </p>
 
 <p align="center">
+  <a href="#download">Download</a> ·
   <a href="docs/USER_MANUAL.md">User manual</a>
 </p>
 <!-- rumdl-enable MD033 MD041 -->
@@ -50,13 +51,28 @@ acquisition and for cognitive improvements.
 - Review two solution methods for every problem, step by step.
 - Division remainder problems.
 - Turn on a solve timer, or hide your digits as you type with blind entry.
-- Rate each problem Good or Bad, then copy or share all your ratings as plain
-  text to look for patterns in any tool you choose.
+- Rate each problem Good or Bad, then copy all your ratings as plain text or
+  share them as a JSON file to look for patterns in any tool you choose. On
+  Android you can also save the JSON file.
+
+## Download
+
+| Platform | Download | Notes |
+| --- | --- | --- |
+| Android | [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.textmath) | Requires Android 8.0 or later. |
+
+The iOS app is not yet released.
 
 ## User Manual
 
 See the [User Manual](docs/USER_MANUAL.md) for installation, setup, usage, and
 troubleshooting.
+
+## Feedback
+
+Bug reports and feature requests are welcome. In the Android app, open
+**Settings** and tap **Send feedback**. You can also use the
+[contact form](https://plaintxtoffice.com/contact/) on plaintxtoffice.com.
 
 ## License
 

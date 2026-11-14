@@ -1,5 +1,5 @@
 ---
-last_updated: 2026-11-11
+last_updated: 2026-11-13
 version: 5.2.0
 product_versions:
   ios: "1.0.0"
@@ -24,9 +24,8 @@ might pair `19 + 13` to make 32 and then add 28, or keep a running total
 from left to right. Both are valid, and Text Math shows both.
 <!-- Verified from: platform/ios/text_math/MentalMathProblemGenerator.swift [regroupedAddition] -->
 
-Text Math is for anyone who wants to improve their number sense. It may suit
-students, but it is not organized around school grades, homework, or test
-preparation.
+Text Math is for teens and adults who want to improve their number sense. It
+is not organized around school grades, homework, or test preparation.
 
 Text Math runs on iPhone, iPad, and Android. Its interface is the app's touch
 screen.
@@ -36,11 +35,10 @@ screen.
 
 ### Install on Android
 
-Android requires Android 8.0 or newer. This repository provides an independently
-buildable Android project; it is not a Google Play listing. Build and run using
-the [Android instructions](../platform/android/README.md). The debug APK
-includes development feedback tools and installs separately from a signed
-release.
+Install Text Math from
+[Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.textmath).
+It requires Android 8.0 or later.
+<!-- Verified from: platform/android/app/build.gradle.kts [applicationId, minSdk] -->
 
 The practice behavior described below also applies to Android: mixed 3/5/10
 problem workouts, three attempts, help, two solution methods, quotient and
@@ -64,12 +62,8 @@ important ratings before clearing app storage or uninstalling. If a saved
 ratings archive cannot be read, it remains untouched and new ratings pause;
 discarding it in Settings requires confirmation and cannot be undone.
 
-Debug builds include **Feedback** in the top bar, a shake trigger, optional
-screenshots, problem feedback notes, and an optional backup folder you select.
-Release builds omit those developer controls. Android-specific setup and
-feedback retrieval are documented in the
-[Android README](../platform/android/README.md). The iOS-specific installation
-and operating-system controls below remain labeled for iOS.
+The iOS-specific installation and operating-system controls below remain
+labeled for iOS.
 
 ### Install on iOS
 
@@ -78,7 +72,7 @@ and operating-system controls below remain labeled for iOS.
 | Devices | iPhone and iPad |
 | System requirement | iOS 26.5 or later |
 | Version | 1.0.0 |
-| Installation source | Unknown. The app has not been published, and no download location is available yet. |
+| Installation source | Not released yet. No download location is available. |
 | Dependencies | None beyond iOS |
 <!-- Verified from: platform/ios/text_math.xcodeproj/project.pbxproj [IPHONEOS_DEPLOYMENT_TARGET, TARGETED_DEVICE_FAMILY, MARKETING_VERSION] -->
 
@@ -96,11 +90,13 @@ sign-in, or permissions. You can adjust its options at any time in
 <!-- Verified from: platform/ios/text_math/ContentView.swift [HomeView navigationTitle, navigationSubtitle] -->
 <!-- Verified from: platform/ios/text_math.xcodeproj/project.pbxproj [INFOPLIST_KEY_CFBundleDisplayName] -->
 
-To quit, leave the app the usual iOS way, such as swiping up from the bottom
-of the screen. Your settings and ratings are kept. A workout in progress is
-not saved.
+To quit, leave the app the way you leave any app on your device; on iOS, for
+example, swipe up from the bottom of the screen. Your settings and ratings are
+kept. On iOS, a workout in progress is not saved. On Android, a workout in
+progress is restored after the screen rotates or the system restarts the app.
 <!-- Verified from: platform/ios/text_math/ContentView.swift [ContentView, SettingsView] -->
 <!-- Verified from: platform/ios/text_math/ProblemPreferences.swift [ProblemPreferences.save] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/application/PracticeViewModel.kt [PracticeViewModel.session] -->
 
 ## Getting Around
 
@@ -125,10 +121,11 @@ about the current problem.
 ### Start a Workout
 
 1. On the home screen, under **Workout**, tap **Start** on the **Mixed
-   Practice** card.
+   Practice** card. On Android, the button is labeled **Start Session**.
 1. The workout opens with the first problem.
 <!-- Verified from: platform/ios/text_math/ContentView.swift [HomeView.workoutSelection, WorkoutCard] -->
 <!-- Verified from: platform/ios/text_math/WorkoutModel.swift [WorkoutSelection] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/ui/HomeScreen.kt [HomeScreen] -->
 
 **Mixed Practice** is currently the only workout. Its card reads **Addition,
 subtraction, multiplication, division, and fractions.** Below that, it shows
@@ -163,7 +160,7 @@ Every answer is a whole number. Fractions are always shown in lowest terms.
 1. Read the problem under **Problem _N_ of _M_** and work it out in your head.
 1. Enter your answer with the on-screen number pad. Tap **⌫** to delete the
    last digit.
-1. Tap the arrow button to check your answer.
+1. Tap the arrow button to check your answer. On Android, tap **Check**.
 <!-- Verified from: platform/ios/text_math/WorkoutView.swift [solvingContent, NumberPad] -->
 
 Accepted input:
@@ -205,6 +202,10 @@ Some division problems do not divide evenly. These show two fields,
 1. Tap the arrow button, now teal again, to check both parts.
 <!-- Verified from: platform/ios/text_math/WorkoutView.swift [answerEntry, advancesToRemainder, submit, NumberPad] -->
 
+On Android, the button reads **Next** while it moves to **Remainder** and
+**Check** when it checks the answer.
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/ui/AnswerEntry.kt -->
+
 Tap either field to go back and change it. Both parts must be correct for the
 answer to count. For `51 ÷ 6`, enter 8 and 3; the answer is shown as `8 R 3`.
 <!-- Verified from: platform/ios/text_math/WorkoutModel.swift [WorkoutProblem.accepts, answerText] -->
@@ -216,7 +217,8 @@ missed attempts it shows **Answer revealed**. Both show the full problem with
 its answer, such as `17 × 6 = 102`.
 <!-- Verified from: platform/ios/text_math/WorkoutView.swift [reflectionView] -->
 
-When **Show solution methods after each problem** is on, the screen also shows
+When **Show solution methods after each problem** (**Show solution methods** on
+Android) is on, the screen also shows
 two method cards. Each card has a title, such as **Split into tens and ones** or
 **Round up and subtract**, numbered steps, and a one-line note on why the method
 works.
@@ -299,72 +301,93 @@ it.
 ## Settings and Preferences
 
 Open **Settings** with the gear button on the home screen, and tap **Done**
-to close it. Changes are saved as soon as you make them and are kept between
-uses.
+to close it. On Android, tap the back arrow at the top left instead. Changes
+are saved as soon as you make them and are kept between uses.
 <!-- Verified from: platform/ios/text_math/ContentView.swift [HomeView toolbar, SettingsView] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/ui/PracticeApp.kt [TopAppBar navigationIcon] -->
+
+Some settings have shorter names on Android. The table gives the iOS name
+first and the Android name where it differs.
 
 | Setting | Default | Accepted values | How to change it |
 | --- | --- | --- | --- |
 | **Problems per workout** | 10 | 3, 5, or 10 | Segmented control at the top of Settings |
-| **Show solution methods after each problem** | On | On or off | Toggle under **After solving** |
-| **Show solve timer** | Off | On or off | Toggle under **Timing** |
-| **Hide problem after a few seconds** | Off | On or off | Toggle under **Focus** |
-| **Hide after** | 5 seconds | 3, 5, 8, or 12 seconds | Picker under **Focus**, shown when **Hide problem after a few seconds** is on |
+| **Show solution methods after each problem** (Android: **Show solution methods**) | On | On or off | Toggle under **After solving** (Android: **Workout**) |
+| **Show solve timer** | Off | On or off | Toggle under **Timing** (Android: **Workout**) |
+| **Hide problem after a few seconds** (Android: **Hide problem**) | Off | On or off | Toggle under **Focus** |
+| **Hide after** (Android: **Hide after (seconds)**) | 5 seconds | 3, 5, 8, or 12 seconds | Picker under **Focus**, shown when **Hide problem after a few seconds** is on |
 | **Blind entry** | Off | On or off; always on while **Hide problem after a few seconds** is on | Toggle under **Focus** |
 <!-- Verified from: platform/ios/text_math/ContentView.swift [SettingsView, SettingsKey] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/ui/SettingsScreen.kt [SettingsScreen] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/domain/PracticeSettings.kt [PracticeSettings] -->
 
 - **Problems per workout**: sets the length of the next workout you start. A
   workout in progress keeps its length.
-- **Show solution methods after each problem**: when off, the review screen
+- **Show solution methods after each problem** (**Show solution methods** on
+  Android): when off, the review screen
   shows only the answer and the rating question, so you can move straight on.
   The **Help** hint while solving is not affected.
 - **Show solve timer**: shows a stopwatch above each problem while you solve
   it and adds the total solve time to the **Workout complete** screen.
-- **Hide problem after a few seconds**: replaces the problem with **Problem
-  hidden** once the **Hide after** delay passes, so you hold the numbers in
-  your head as well as your working. Tap **Show again** to see the problem for
-  another delay. While this setting is on, **Blind entry** stays on and cannot
-  be turned off, so the answer field cannot be used to store the numbers.
-  Workouts started with this setting on leave out three-term addition, which
-  would mean holding too many numbers at once.
+- **Hide problem after a few seconds** (**Hide problem** on Android): replaces
+  the problem with **Problem hidden** once the **Hide after** delay passes, so
+  you hold the numbers in your head as well as your working. Tap **Show again**
+  to see the problem for another delay. While this setting is on,
+  **Blind entry** stays on and cannot be turned off, so the answer field cannot
+  be used to store the numbers. Workouts started with this setting on leave out
+  three-term addition, which would mean holding too many numbers at once.
 - **Blind entry**: shows a dot in place of each digit you type, so you commit
   to the whole answer before checking it.
 <!-- Verified from: platform/ios/text_math/WorkoutView.swift [solvingContent, problemPrompt, reflectionView, completionView, AnswerField] -->
 <!-- Verified from: platform/ios/text_math/MentalMathProblemGenerator.swift [generateAll, allowedWhenPromptHidden] -->
 
-The **Problem ratings** section at the top of **Settings** shows how many
+The **Problem ratings** section of **Settings** shows how many
 rated problems are saved and holds the export buttons described in
 [Importing and Exporting](#importing-and-exporting).
 <!-- Verified from: platform/ios/text_math/ContentView.swift [SettingsView] -->
 
 ## Importing and Exporting
 
-Text Math can export your problem ratings as plain text. It has no import
-feature.
+Text Math can export your problem ratings in two formats: plain text copied
+to the clipboard, or a JSON file that you share or, on Android, save. It has
+no import feature.
 <!-- Verified from: platform/ios/text_math/ContentView.swift [SettingsView] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/ui/RatingsActions.kt [RatingsActions] -->
 
 ### Export Your Ratings
 
 1. On the home screen, tap the gear button to open **Settings**.
 1. Under **Problem ratings**, tap one of:
-   - **Copy ratings to clipboard** to copy the list. The message **Ratings
-     copied. Paste them into any tool to look for patterns.** appears.
-     Copying replaces whatever was on the clipboard.
-   - **Share ratings file** to send the list as a JSON file named
-     `text_math-ratings-<date>-<time>.json` to an app or destination you choose.
-     Each rating includes the problem, its answer, when you rated it, its hint,
-     and its method names.
-<!-- Verified from: platform/ios/text_math/ContentView.swift [SettingsView] -->
+   - **Copy ratings to clipboard** to copy the list as plain text. The message
+     **Ratings copied. Paste them into any tool to look for patterns.**
+     appears. Copying replaces whatever was on the clipboard.
+   - **Share ratings file** to send the list as a JSON file to an app or
+     destination you choose. The file is named
+     `text_math-ratings-<date>-<time>.json` on iOS and `text_math-ratings.json`
+     on Android.
+   - **Save ratings file**, on Android only, to save the same JSON file to a
+     location you choose in Android's file picker. The suggested name is
+     `text_math-ratings-<date>-<time>.json`, and the message
+     **Ratings file saved.** appears.
+<!-- Verified from: platform/ios/text_math/ContentView.swift [SettingsView, RatingsExportFile] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/ui/RatingsActions.kt [RatingsActions] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/storage/RatingFiles.kt [RatingFiles.shareIntent] -->
 <!-- Verified from: docs/PRIVACY.md [Sharing] -->
 
-Both buttons are unavailable until you have rated at least one problem.
+These buttons are unavailable until you have rated at least one problem.
 <!-- Verified from: platform/ios/text_math/ContentView.swift [SettingsView] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/ui/RatingsActions.kt [RatingsActions] -->
 
-The export contains every saved rating, oldest first. It starts with two
-lines explaining the labels and giving the totals and export date, followed
-by a blank line. Each rating is then one line: `good` or `bad`, a tab, and
-the problem with its answer.
+#### Plain Text from Copy Ratings to Clipboard
+
+The copied text contains every saved rating, oldest first. It starts with a
+line explaining the labels and a line giving the totals, followed by a blank
+line. On iOS the totals line also gives the export date. Each rating is then
+one line: `good` or `bad`, a tab, and the problem with its answer.
 <!-- Verified from: platform/ios/text_math/ProblemPreferences.swift [ProblemPreferences.exportText] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/storage/RatingsExport.kt [RatingsExport.text] -->
+
+This example is from iOS:
 
 ```text
 Mental arithmetic problems I rated. "good" means a good problem for mental reasoning; "bad" means it was not.
@@ -381,6 +404,14 @@ rated well.
 <!-- Verified from: platform/ios/text_math/ProblemPreferences.swift [ProblemPreferences.exportText] -->
 <!-- Verified from: docs/PRIVACY.md [On your device] -->
 
+#### JSON File from Share or Save Ratings File
+
+The JSON file contains a short description, the export time, and every saved
+rating, oldest first. Each rating includes `good` or `bad`, the problem, its
+answer, when you rated it, its hint, and its method names.
+<!-- Verified from: platform/ios/text_math/ProblemPreferences.swift [ProblemPreferences.exportJSON, ExportedRatings, ExportedRating] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/storage/RatingsExport.kt [RatingsExport.json] -->
+
 ## Commands and Shortcuts
 
 Text Math is controlled with on-screen buttons. It has no menus and defines
@@ -391,10 +422,10 @@ no keyboard shortcuts.
 | Control | Where | What it does |
 | --- | --- | --- |
 | Gear button | Home screen, top right | Opens **Settings** |
-| **Start** | Home screen, workout card | Starts the workout |
+| **Start** (Android: **Start Session**) | Home screen, workout card | Starts the workout |
 | **0** to **9** | Number pad | Enters a digit |
 | **⌫** | Number pad | Deletes the last digit |
-| Arrow button | Number pad | Checks the answer (teal), or moves from **Quotient** to **Remainder** (yellow) |
+| Arrow button (Android: **Check** / **Next**) | Number pad | Checks the answer (teal on iOS), or moves from **Quotient** to **Remainder** (yellow on iOS) |
 | **Help** / **Hide help** | Below the number pad | Shows or hides the hint |
 | **X** button | Workout, top left | Asks whether to end the workout |
 | **Good** / **Bad** | Review screen | Rates the problem |
@@ -423,12 +454,12 @@ ratings and settings. Copies you exported and device backups are separate.
 | The arrow button cannot be tapped | No answer has been entered, or the remainder is still empty | Enter the answer, and for remainder problems fill in both fields |
 | More digits cannot be entered | Each answer field holds at most five digits | Tap **⌫** to correct the answer |
 | The review screen shows **Answer revealed** | All three attempts were used, so the answer was shown | Study the methods on the review screen, then continue |
-| The review screen shows no methods | **Show solution methods after each problem** is off | Turn it on in **Settings** |
+| The review screen shows no methods | **Show solution methods after each problem** (Android: **Show solution methods**) is off | Turn it on in **Settings** |
 | No stopwatch or solve time appears | **Show solve timer** is off | Turn it on in **Settings** |
-| The problem is replaced by **Problem hidden** | **Hide problem after a few seconds** is on | Tap **Show again**, or turn the setting off in **Settings** |
+| The problem is replaced by **Problem hidden** | **Hide problem after a few seconds** (Android: **Hide problem**) is on | Tap **Show again**, or turn the setting off in **Settings** |
 | Your answer shows only dots | **Blind entry** is on | Turn it off in **Settings** |
-| **Blind entry** cannot be turned off | **Hide problem after a few seconds** is on | Turn off **Hide problem after a few seconds** first |
-| **Copy ratings to clipboard** and **Share ratings file** are unavailable | No problems have been rated yet | Rate a problem on a review screen, then try again |
+| **Blind entry** cannot be turned off | **Hide problem after a few seconds** (Android: **Hide problem**) is on | Turn off that setting first |
+| **Copy ratings to clipboard**, **Share ratings file**, and on Android **Save ratings file** are unavailable | No problems have been rated yet | Rate a problem on a review screen, then try again |
 | **Settings** shows **Saved ratings could not be read. A backup of the original data was kept and new ratings are paused.** | The saved ratings could not be loaded, so new ratings are not saved | Tap **Discard unreadable ratings and start fresh** to start a new ratings list |
 | **Settings** shows **Could not save ratings.** | Saving the ratings list failed | Unknown. |
 <!-- Verified from: platform/ios/text_math/WorkoutView.swift [canSubmit, NumberPad.append, reflectionView, AnswerField] -->

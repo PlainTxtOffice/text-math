@@ -51,8 +51,8 @@ file providers, follow their own settings and policies.
 We intend to use Apple-provided crash and performance information, when
 available under your Apple diagnostic-sharing choices, only to troubleshoot
 problems and improve reliability. App diagnostic logging should not
-intentionally include document text, task contents, feed bodies, private
-filenames, URLs, tokens or other private content. Apple controls its
+intentionally include your problems, answers, ratings, exported ratings or
+other private content. Apple controls its
 system-generated reports; we cannot guarantee those reports contain no sensitive
 information.
 
