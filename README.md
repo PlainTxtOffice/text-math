@@ -3,7 +3,7 @@
 <!-- Authoring guidance: dev-docs/specs/README_SPEC.instructions.md -->
 <!-- rumdl-disable MD033 MD041 -->
 <p align="center">
-  <img src="assets/icons/text_math-github.svg" alt="Text Math app icon" width="96">
+  <img src="assets/icons/icon-github-readme.svg" alt="Text Math app icon" width="96">
 </p>
 
 <h1 align="center">Text Math</h1>
@@ -61,8 +61,6 @@ acquisition and for cognitive improvements.
 | --- | --- | --- |
 | Android | [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.textmath) | Version 1.1.1. Requires Android 8.0 or later. |
 | iPhone and iPad | [App Store](https://apps.apple.com/app/id6837570100) | Listed as **Plain Text Math**. Version 1.0.0. Requires iOS 26.5 or later. |
-
-Text Math is free on both stores, with no purchases.
 
 ## User Manual
 
