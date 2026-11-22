@@ -1,4 +1,4 @@
-<!-- last_updated: 2026-11-13 -->
+<!-- last_updated: 2026-11-22 -->
 
 <!-- Authoring guidance: dev-docs/specs/README_SPEC.instructions.md -->
 <!-- rumdl-disable MD033 MD041 -->
@@ -59,9 +59,10 @@ acquisition and for cognitive improvements.
 
 | Platform | Download | Notes |
 | --- | --- | --- |
-| Android | [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.textmath) | Requires Android 8.0 or later. |
+| Android | [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.textmath) | Version 1.1.1. Requires Android 8.0 or later. |
+| iPhone and iPad | [App Store](https://apps.apple.com/app/id6837570100) | Listed as **Plain Text Math**. Version 1.0.0. Requires iOS 26.5 or later. |
 
-The iOS app is not yet released.
+Text Math is free on both stores, with no purchases.
 
 ## User Manual
 
@@ -70,9 +71,13 @@ troubleshooting.
 
 ## Feedback
 
-Bug reports and feature requests are welcome. In the Android app, open
-**Settings** and tap **Send feedback**. You can also use the
-[contact form](https://plaintxtoffice.com/contact/) on plaintxtoffice.com.
+Send bug reports and feature requests to
+[support@plaintxtoffice.com](mailto:support@plaintxtoffice.com) or through the
+[contact page](https://plaintxtoffice.com/contact/). In the iOS app, version
+1.0.0, you can also open **Settings** and tap **Send Feedback** under
+**Feedback**; the email draft holds only the app version, the iOS version and
+the device model. The Android app gets the same feedback screen in its next
+update; version 1.1.1 on Google Play does not have it.
 
 ## License
 

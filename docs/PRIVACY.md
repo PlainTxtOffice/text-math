@@ -1,8 +1,15 @@
+---
+privacy_updated:
+  ios: "2026-11-20"
+  android: "2026-11-20"
+---
+
 # Text Math privacy policy — publication draft
 
 <!-- Covers the iOS and Android apps. -->
 
-Updated November 1, 2026.
+Each app's Privacy screen shows the date it was last changed. Those dates are
+listed per platform as `privacy_updated` at the top of this file.
 
 ## On your device
 
@@ -23,6 +30,9 @@ when the 200-rating limit is reached. This version has no clear-all ratings
 control. Deleting the app removes its local ratings and settings; copies you
 shared and device backups are separate.
 
+On iOS, iCloud and computer backups include the app's settings and ratings, and
+restoring a backup brings them back.
+
 On Android, clearing app storage also removes local data. Automatic Android
 backup and device transfer are disabled. Save ratings writes a JSON file to the
 location chosen in Android's file picker.
@@ -34,11 +44,12 @@ ratings exports. Choosing a development backup folder enables copying this
 feedback to that folder; its provider's policies apply. Release builds omit the
 developer feedback controls.
 
-On Android, **Send feedback** in Settings opens your email app with a draft to
-`support@plaintxtoffice.com` that includes the app version, Android version and
-device model, or opens the contact form on our website. Ratings and problems
-are never included, and nothing is sent unless you send it. We use feedback to
-reply to you, fix bugs and consider feature requests.
+**Send Feedback** in Settings opens your email app with a draft to
+`support@plaintxtoffice.com`, or opens the contact form on our website. On iOS
+the draft holds only the app version, iOS version and device model; on Android
+it holds the app version, Android version and device model. Ratings and
+problems are never included, and nothing is sent unless you send it. We use
+feedback to reply to you, fix bugs and consider feature requests.
 
 ## Developer services
 
