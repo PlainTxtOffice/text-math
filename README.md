@@ -16,7 +16,7 @@
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Proprietary-informational" alt="License: Proprietary"></a>
-  <a href="#about"><img src="https://img.shields.io/badge/platforms-Android%20%7C%20iOS-informational" alt="Platforms: Android and iOS"></a>
+  <a href="#download"><img src="https://img.shields.io/badge/platforms-Android%20%7C%20iOS-informational" alt="Platforms: Android and iOS"></a>
 </p>
 
 <p align="center">

@@ -1,6 +1,6 @@
 ---
 last_updated: 2026-11-22
-version: 5.3.0
+version: 6.0.0
 product_versions:
   ios: "1.0.0"
   android: "1.1.2"
@@ -283,31 +283,6 @@ Ending a workout discards its progress. Ratings you already saved are kept.
 <!-- Verified from: platform/ios/text_math/ContentView.swift [SettingsView] -->
 <!-- Verified from: platform/ios/text_math/PrivacyPolicyView.swift [PrivacyPolicyView] -->
 
-### Send Feedback
-
-Send bug reports and feature requests to `support@plaintxtoffice.com` or
-through the [contact page](https://plaintxtoffice.com/contact/). You can also
-send them from the app on iOS and Android. On Android, the feedback screen
-arrives in the next update, 1.1.2; version 1.1.1 on Google Play does not have
-it.
-
-1. On the home screen, tap the gear button to open **Settings**.
-1. On iOS, under **Feedback**, tap **Send Feedback**. On Android, under
-   **About**, tap **Send feedback**.
-1. Tap **Report a bug** or **Request a feature**. Your email app opens a draft
-   to `support@plaintxtoffice.com`. On iOS the draft holds only the app
-   version, the iOS version and the device model; on Android it holds the app
-   version, the Android version and the device model. Write your message and
-   send it.
-1. To use the website instead, tap **Open contact form**.
-1. On iOS, tap **Done** to close **Send Feedback**.
-
-Ratings and problems are never included, and nothing is sent unless you send
-it.
-<!-- Verified from: platform/ios/text_math/ContentView.swift [SettingsView] -->
-<!-- Verified from: platform/ios/text_math/Feedback.swift [Feedback, FeedbackView] -->
-<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/ui/FeedbackScreen.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/ui/SettingsScreen.kt -->
-
 ## Settings and Preferences
 
 Open **Settings** with the gear button on the home screen, and tap **Done**
@@ -471,8 +446,9 @@ ratings and settings. Copies you exported and device backups are separate.
 | **Blind entry** cannot be turned off | **Hide problem after a few seconds** (Android: **Hide problem**) is on | Turn off that setting first |
 | **Copy ratings to clipboard**, **Share ratings file**, and on Android **Save ratings file** are unavailable | No problems have been rated yet | Rate a problem on a review screen, then try again |
 | **Settings** shows **Saved ratings could not be read. A backup of the original data was kept and new ratings are paused.** | The saved ratings could not be loaded, so new ratings are not saved | Tap **Discard unreadable ratings and start fresh** to start a new ratings list |
-| **Settings** shows **Could not save ratings.** | Saving the ratings list failed | Unknown. |
+| **Settings** shows **Could not save ratings.** | The ratings list could not be saved, so the latest rating was not kept for next time | On Android, the rating that failed is not added; if the device is low on storage, make space, then rate the problem again. On iOS, the rating stays in the list only until the app closes, so copy or share your ratings from **Settings** first if you want to keep it. |
 <!-- Verified from: platform/ios/text_math/WorkoutView.swift [canSubmit, NumberPad.append, reflectionView, AnswerField] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/storage/PracticeStore.kt [saveRatings]; platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/application/PracticeViewModel.kt [rate, write] -->
 <!-- Verified from: platform/ios/text_math/WorkoutModel.swift [WorkoutSession.submit] -->
 <!-- Verified from: platform/ios/text_math/ContentView.swift [SettingsView] -->
 <!-- Verified from: platform/ios/text_math/ProblemPreferences.swift [ProblemPreferences.init, discardUnreadableRatings, save] -->
@@ -507,6 +483,36 @@ No account is used, and problems are generated on your device. Sharing your
 ratings and the **Contact Plain Text Office** link use other apps or the web.
 <!-- Verified from: docs/PRIVACY.md [On your device, Sharing, Developer services] -->
 <!-- Verified from: platform/ios/text_math/PrivacyPolicyView.swift [PrivacyPolicyView] -->
+
+## Feedback
+
+Send bug reports and feature requests by email to
+<support@plaintxtoffice.com> or through the contact page at
+<https://plaintxtoffice.com/contact/>. You can also send them from the app's
+feedback screen:
+
+| Platform | How to open feedback |
+| --- | --- |
+| iOS | Tap the gear button on the home screen to open **Settings**, then under **Feedback**, tap **Send Feedback**. |
+| Android | Tap the gear icon in the top bar to open **Settings**, then under **About**, tap **Send feedback**. The feedback screen arrives in the next update, 1.1.2; version 1.1.1 on Google Play does not have it. |
+
+### Send Feedback from the App
+
+1. Open the feedback screen as shown in the table.
+1. Tap **Report a bug** or **Request a feature**. Your email app opens a draft
+   to <support@plaintxtoffice.com>. On iOS the draft holds only the app
+   version, the iOS version and the device model; on Android it holds the app
+   version, the Android version and the device model. Write your message and
+   send it.
+1. To use the website instead, tap **Open contact form**.
+1. On iOS, tap **Done** to close **Send Feedback**.
+
+Ratings and problems are never included, and nothing is sent unless you send
+it.
+<!-- Verified from: platform/ios/text_math/ContentView.swift [SettingsView] -->
+<!-- Verified from: platform/ios/text_math/Feedback.swift [Feedback, FeedbackView] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/ui/FeedbackScreen.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/ui/SettingsScreen.kt -->
+<!-- Verified from: app registry dev-docs/APPS.md [Store Status: Text Math] -->
 
 ## Glossary
 
