@@ -1,5 +1,5 @@
 ---
-last_updated: 2026-11-22
+last_updated: 2026-11-24
 version: 6.0.0
 product_versions:
   ios: "1.0.0"
@@ -487,7 +487,7 @@ ratings and the **Contact Plain Text Office** link use other apps or the web.
 ## Feedback
 
 Send bug reports and feature requests by email to
-<support@plaintxtoffice.com> or through the contact page at
+<feedback@plaintxtoffice.com> or through the contact page at
 <https://plaintxtoffice.com/contact/>. You can also send them from the app's
 feedback screen:
 
@@ -500,7 +500,8 @@ feedback screen:
 
 1. Open the feedback screen as shown in the table.
 1. Tap **Report a bug** or **Request a feature**. Your email app opens a draft
-   to <support@plaintxtoffice.com>. On iOS the draft holds only the app
+   to <feedback@plaintxtoffice.com> (<support@plaintxtoffice.com> in iOS version
+   1.0.0). On iOS the draft holds only the app
    version, the iOS version and the device model; on Android it holds the app
    version, the Android version and the device model. Write your message and
    send it.

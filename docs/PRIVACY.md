@@ -45,11 +45,12 @@ feedback to that folder; its provider's policies apply. Release builds omit the
 developer feedback controls.
 
 **Send Feedback** in Settings opens your email app with a draft to
-`support@plaintxtoffice.com`, or opens the contact form on our website. On iOS
-the draft holds only the app version, iOS version and device model; on Android
-it holds the app version, Android version and device model. Ratings and
-problems are never included, and nothing is sent unless you send it. We use
-feedback to reply to you, fix bugs and consider feature requests.
+`feedback@plaintxtoffice.com` (`support@plaintxtoffice.com` in iOS version
+1.0.0), or opens the contact form on our website. On iOS the draft holds only
+the app version, iOS version and device model; on Android it holds the app
+version, Android version and device model. Ratings and problems are never
+included, and nothing is sent unless you send it. We use feedback to reply to
+you, fix bugs and consider feature requests.
 
 ## Developer services
 

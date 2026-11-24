@@ -70,7 +70,7 @@ troubleshooting.
 ## Feedback
 
 Send bug reports and feature requests to
-[support@plaintxtoffice.com](mailto:support@plaintxtoffice.com) or through the
+[feedback@plaintxtoffice.com](mailto:feedback@plaintxtoffice.com) or through the
 [contact page](https://plaintxtoffice.com/contact/). In the iOS app, version
 1.0.0, you can also open **Settings** and tap **Send Feedback** under
 **Feedback**; the email draft holds only the app version, the iOS version and
