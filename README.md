@@ -51,14 +51,14 @@ acquisition and for cognitive improvements.
 - Review two solution methods for every problem, step by step.
 - Division remainder problems.
 - Turn on a solve timer, or hide your digits as you type with blind entry.
-- On iOS, practice one operation at a time: addition, subtraction,
-  multiplication, division, or fractions.
-- On iOS, see your finished workouts in History, with each score and solve
-  time, your overall share solved and your average time per problem.
-- On iOS, get a light haptic tap for a right answer and a firmer one for a
-  wrong answer; turn it off in Settings.
-- On iOS, answer from a hardware keyboard, such as on an iPad: type digits,
-  press Return to check, and Tab to move to the remainder.
+- Practice one operation at a time: addition, subtraction, multiplication,
+  division, or fractions.
+- See your finished workouts in History, with each score and solve time, your
+  overall share solved and your average time per problem.
+- Get a light haptic tap for a right answer and a firmer one for a wrong
+  answer; turn it off in Settings.
+- Answer from a hardware keyboard, such as on a tablet: type digits, press
+  Return or Enter to check, and Tab to move to the remainder.
 - Rate each problem Good or Bad, then copy all your ratings as plain text or
   share them as a JSON file to look for patterns in any tool you choose. On
   Android you can also save the JSON file.
@@ -67,7 +67,7 @@ acquisition and for cognitive improvements.
 
 | Platform | Download | Notes |
 | --- | --- | --- |
-| Android | [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.textmath) | Version 1.1.1. Requires Android 8.0 or later. |
+| Android | [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.textmath) | Version 1.2.0. Requires Android 8.0 or later. |
 | iPhone and iPad | [App Store](https://apps.apple.com/app/id6837570100) | Listed as **Plain Text Math**. Version 1.2.0. Requires iOS 26.5 or later. |
 
 ## User Manual
@@ -79,11 +79,11 @@ troubleshooting.
 
 Send bug reports and feature requests to
 [feedback@plaintxtoffice.com](mailto:feedback@plaintxtoffice.com) or through the
-[contact page](https://plaintxtoffice.com/contact/). In the iOS app, you can
-also open **Settings** and tap **Send Feedback** under
-**Feedback**; the email draft holds only the app version, the iOS version and
-the device model. The Android app gets the same feedback screen in its next
-update; version 1.1.1 on Google Play does not have it.
+[contact page](https://plaintxtoffice.com/contact/). You can also send them
+from the app: on iOS, open **Settings** and tap **Send Feedback** under
+**Feedback**; on Android, open **Settings** and tap **Send feedback** under
+**About**. The email draft holds only the app version, the system version and
+the device model.
 
 ## License
 

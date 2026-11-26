@@ -1,6 +1,6 @@
 ---
 last_updated: 2026-11-26
-version: 6.2.0
+version: 6.2.1
 product_versions:
   ios: "1.2.0"
   android: "1.2.0"
@@ -566,7 +566,7 @@ feedback screen:
 | Platform | How to open feedback |
 | --- | --- |
 | iOS | Tap the gear button on the home screen to open **Settings**, then under **Feedback**, tap **Send Feedback**. |
-| Android | Tap the gear icon in the top bar to open **Settings**, then under **About**, tap **Send feedback**. The feedback screen arrives in the next update, 1.1.2; version 1.1.1 on Google Play does not have it. |
+| Android | Tap the gear icon in the top bar to open **Settings**, then under **About**, tap **Send feedback**. |
 
 ### Send Feedback from the App
 
