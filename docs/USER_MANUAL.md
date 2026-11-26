@@ -1,9 +1,9 @@
 ---
-last_updated: 2026-11-24
-version: 6.0.0
+last_updated: 2026-11-26
+version: 6.2.0
 product_versions:
-  ios: "1.0.0"
-  android: "1.1.2"
+  ios: "1.2.0"
+  android: "1.2.0"
 generated_from: "dev-docs/specs/USER_MANUAL_SPEC.instructions.md"
 ---
 
@@ -28,7 +28,8 @@ Text Math is for teens and adults who want to improve their number sense. It
 is not organized around school grades, homework, or test preparation.
 
 Text Math runs on iPhone, iPad, and Android. Its interface is the app's touch
-screen.
+screen; a hardware keyboard can also answer problems (see
+[Hardware Keyboard](#hardware-keyboard)).
 <!-- Verified from: platform/ios/text_math.xcodeproj/project.pbxproj [INFOPLIST_KEY_CFBundleDisplayName, TARGETED_DEVICE_FAMILY] -->
 
 ## Installation and Setup
@@ -40,12 +41,14 @@ Install Text Math from
 It requires Android 8.0 or later.
 <!-- Verified from: platform/android/app/build.gradle.kts [applicationId, minSdk] -->
 
-The practice behavior described below also applies to Android: mixed 3/5/10
-problem workouts, three attempts, help, two solution methods, quotient and
-remainder entry, Good/Bad ratings, and the timer and focus options. The
+The practice behavior described below also applies to Android: mixed and
+single-operation 3/5/10 problem workouts, three attempts, help, two solution
+methods, quotient and remainder entry, Good/Bad ratings, workout history,
+hardware keyboard entry, and the timer, haptics and focus options. The
 workout card's button is labeled **Start Session** on Android. Android uses
 **Check** to submit and **Next** to move from quotient to remainder.
-**Settings** is the gear icon in the top bar. The system Back button and the
+**Settings** is the gear icon in the top bar, with the **History** clock icon
+beside it. The system Back button and the
 close icon (**End workout**) both ask before discarding an active workout;
 choose **Keep going** to cancel.
 
@@ -71,7 +74,7 @@ labeled for iOS.
 | --- | --- |
 | Devices | iPhone and iPad |
 | System requirement | iOS 26.5 or later |
-| Version | 1.0.0 |
+| Version | 1.2.0 |
 | Installation source | [App Store](https://apps.apple.com/app/id6837570100), listed as **Plain Text Math** |
 | Dependencies | None beyond iOS |
 <!-- Verified from: platform/ios/text_math.xcodeproj/project.pbxproj [IPHONEOS_DEPLOYMENT_TARGET, TARGETED_DEVICE_FAMILY, MARKETING_VERSION] -->
@@ -102,15 +105,18 @@ progress is restored after the screen rotates or the system restarts the app.
 
 | Screen | How to get there | What it contains |
 | --- | --- | --- |
-| Home | Opens at launch | The **Workout** card, the **How it works** steps, and the **Settings** gear button at the top right |
-| Workout | Tap a workout card | One problem at a time, a progress bar at the top, and an **X** button to end the workout |
+| Home | Opens at launch | The **Workout** card, the **Practice one operation** list, the **How it works** steps, and the **Settings** gear button at the top right, with the **History** button beside it |
+| Workout | Tap **Start** on a workout card, or tap a row under **Practice one operation** | One problem at a time, a progress bar at the top, and an **X** button to end the workout |
 | Review | Answer correctly, or use all three attempts | The answer, a rating question, the solution methods, and **Next problem** or **Finish workout** |
 | Workout complete | Finish the last problem | Your score, an optional solve time, and **Return home** |
+| History | Tap the clock button on the home screen | Totals and a list of finished workouts; tap **Done** to close (Android: the back arrow) |
 | Settings | Tap the gear button on the home screen | Ratings export and the app's options; tap **Done** to close |
 | Privacy | Tap **Privacy** in Settings | The privacy policy |
 <!-- Verified from: platform/ios/text_math/ContentView.swift [HomeView, WorkoutCard, SettingsView] -->
 <!-- Verified from: platform/ios/text_math/WorkoutView.swift [WorkoutView toolbar, solvingView, reflectionView, completionView] -->
 <!-- Verified from: platform/ios/text_math/PrivacyPolicyView.swift [PrivacyPolicyButton] -->
+<!-- Verified from: platform/ios/text_math/HistoryView.swift [HistoryView] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/ui/PracticeApp.kt [PracticeApp] -->
 
 The app has no separate help screen. While solving, tap **Help** for a hint
 about the current problem.
@@ -127,7 +133,8 @@ about the current problem.
 <!-- Verified from: platform/ios/text_math/WorkoutModel.swift [WorkoutSelection] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/ui/HomeScreen.kt [HomeScreen] -->
 
-**Mixed Practice** is currently the only workout. Its card reads **Addition,
+**Mixed Practice** covers every operation at once; to focus on one, use a
+[single-operation workout](#practice-one-operation). Its card reads **Addition,
 subtraction, multiplication, division, and fractions.** Below that, it shows
 how many problems the workout has, the three attempts you get for each, and
 how many problems you have rated so far.
@@ -151,6 +158,19 @@ Problems you have already rated are skipped, so each workout brings new ones.
 | Fraction of a quantity | `3/4 of 68` | Find one equal part first; or subtract the complement |
 | Fraction with a larger denominator | `5/6 of 96` | Halve an easier part to reach one part |
 <!-- Verified from: platform/ios/text_math/MentalMathProblemGenerator.swift [Family] -->
+
+### Practice One Operation
+
+The home screen also lists **Practice one operation**: **Addition**,
+**Subtraction**, **Multiplication**, **Division** and **Fractions**. Tap one
+to start a workout with only that operation's problem types from the table
+above. **Division** includes problems with a remainder. These workouts use
+the same length, attempts and settings as **Mixed Practice**, and also skip
+problems you have rated.
+<!-- Verified from: platform/ios/text_math/WorkoutModel.swift [WorkoutSelection] -->
+<!-- Verified from: platform/ios/text_math/MentalMathProblemGenerator.swift [Operation, Family.operation, generateAll] -->
+<!-- Verified from: platform/ios/text_math/ContentView.swift [HomeView.singleOperation, OperationRow] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/domain/WorkoutSelection.kt [WorkoutSelection]; platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/domain/ProblemGenerator.kt [generate]; platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/ui/HomeScreen.kt [OperationRow] -->
 
 Every answer is a whole number. Fractions are always shown in lowest terms.
 <!-- Verified from: platform/ios/text_math/MentalMathProblemGenerator.swift [fractionOfQuantity, fractionOfLargerQuantity] -->
@@ -263,6 +283,27 @@ The solve time adds up only the time spent solving. Time spent on the review
 screens is not counted.
 <!-- Verified from: platform/ios/text_math/WorkoutView.swift [submit, advance] -->
 
+Every finished workout is saved to **History**, whether or not the
+solve timer is on.
+<!-- Verified from: platform/ios/text_math/WorkoutView.swift [advance] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/application/PracticeViewModel.kt [advance, record] -->
+
+### Review Your Workout History
+
+1. On the home screen, tap the clock button at the top right.
+1. **History** shows how many workouts you finished, the share of problems
+   you solved, and the average solve time per problem. Below that, each
+   workout is listed, newest first, with its name, date and time, problems
+   solved, and solve time.
+1. Tap **Done** to close. On Android, tap the back arrow.
+
+History keeps your 200 most recent finished workouts. Workouts you end early
+are not saved. To remove them all, tap **Clear history**, then confirm with
+**Clear history**. Your ratings are kept.
+<!-- Verified from: platform/ios/text_math/HistoryView.swift [HistoryView, SummaryRow, RecordRow] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/ui/HistoryScreen.kt [HistoryScreen, SummaryRow, RecordRow] -->
+<!-- Verified from: platform/ios/text_math/WorkoutHistory.swift [WorkoutHistory.maximumRecords, record, clear] -->
+
 ### End a Workout Early
 
 1. Tap the **X** button at the top left.
@@ -278,10 +319,13 @@ Ending a workout discards its progress. Ratings you already saved are kept.
 
 1. On the home screen, tap the gear button to open **Settings**.
 1. Under **Privacy**, tap **Privacy**.
+1. To read the policy on the website, tap **Read the full privacy policy** at
+   the top.
 1. To ask a question, tap **Contact Plain Text Office**, which opens the
    contact page on the developer's website.
 <!-- Verified from: platform/ios/text_math/ContentView.swift [SettingsView] -->
 <!-- Verified from: platform/ios/text_math/PrivacyPolicyView.swift [PrivacyPolicyView] -->
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/ui/PrivacyScreen.kt [PrivacyScreen] -->
 
 ## Settings and Preferences
 
@@ -301,6 +345,7 @@ first and the Android name where it differs.
 | **Show solve timer** | Off | On or off | Toggle under **Timing** (Android: **Workout**) |
 | **Hide problem after a few seconds** (Android: **Hide problem**) | Off | On or off | Toggle under **Focus** |
 | **Hide after** (Android: **Hide after (seconds)**) | 5 seconds | 3, 5, 8, or 12 seconds | Picker under **Focus**, shown when **Hide problem after a few seconds** is on |
+| **Vibrate on right and wrong answers** | On | On or off | Toggle under **Haptics** |
 | **Blind entry** | Off | On or off; always on while **Hide problem after a few seconds** is on | Toggle under **Focus** |
 <!-- Verified from: platform/ios/text_math/ContentView.swift [SettingsView, SettingsKey] -->
 <!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/ui/SettingsScreen.kt [SettingsScreen] -->
@@ -321,6 +366,9 @@ first and the Android name where it differs.
   **Blind entry** stays on and cannot be turned off, so the answer field cannot
   be used to store the numbers. Workouts started with this setting on leave out
   three-term addition, which would mean holding too many numbers at once.
+- **Vibrate on right and wrong answers**: plays a light tap when an answer is
+  right and a firmer one when it is wrong. Only devices that can vibrate, such
+  as iPhone and most Android phones, do so.
 - **Blind entry**: shows a dot in place of each digit you type, so you commit
   to the whole answer before checking it.
 <!-- Verified from: platform/ios/text_math/WorkoutView.swift [solvingContent, problemPrompt, reflectionView, completionView, AnswerField] -->
@@ -399,14 +447,17 @@ answer, when you rated it, its hint, and its method names.
 
 ## Commands and Shortcuts
 
-Text Math is controlled with on-screen buttons. It has no menus and defines
-no keyboard shortcuts.
+Text Math is controlled with on-screen buttons. It has no menus. A hardware
+keyboard, such as an iPad keyboard or one connected to an Android tablet, can
+also answer problems; see [Hardware Keyboard](#hardware-keyboard).
 <!-- Verified from: platform/ios/text_math/ContentView.swift -->
 <!-- Verified from: platform/ios/text_math/WorkoutView.swift -->
 
 | Control | Where | What it does |
 | --- | --- | --- |
 | Gear button | Home screen, top right | Opens **Settings** |
+| Clock button | Home screen, top right | Opens **History** |
+| A workout row | Home screen, **Practice one operation** | Starts a workout with only that operation |
 | **Start** (Android: **Start Session**) | Home screen, workout card | Starts the workout |
 | **0** to **9** | Number pad | Enters a digit |
 | **⌫** | Number pad | Deletes the last digit |
@@ -419,17 +470,37 @@ no keyboard shortcuts.
 <!-- Verified from: platform/ios/text_math/WorkoutView.swift [NumberPad, solvingContent, reflectionView, completionView, toolbar] -->
 <!-- Verified from: platform/ios/text_math/ContentView.swift [HomeView toolbar] -->
 
+### Hardware Keyboard
+
+During a workout:
+
+| Key | What it does |
+| --- | --- |
+| **0** to **9** | Enters a digit |
+| **Delete** | Deletes the last digit |
+| **Return** | Checks the answer, or moves from **Quotient** to **Remainder**; on the review screen, moves on; on **Workout complete**, returns home |
+| **Tab** | Switches between **Quotient** and **Remainder** |
+| **H** | Shows or hides the hint |
+| **Escape** | Asks whether to end the workout |
+<!-- Verified from: platform/ios/text_math/WorkoutView.swift [handleKey, WorkoutView toolbar] -->
+
+On Android, **Backspace** or **Delete** deletes the last digit and **Enter**
+works as **Return**.
+<!-- Verified from: platform/android/app/src/main/kotlin/com/plaintxtoffice/textmath/ui/WorkoutScreen.kt [handleKey] -->
+
 ## Your Data Files
 
 Text Math has no files for you to open or edit. It stores your settings and
 your 200 most recent ratings, including each rated problem, in the app's own
-storage on your device. Problems are generated on your device, and ratings
+storage on your device. It also stores your 200 most recent finished workouts
+for **History**. Problems are generated on your device, and ratings
 are not sent to any AI service.
 <!-- Verified from: platform/ios/text_math/ProblemPreferences.swift [ProblemPreferences] -->
 <!-- Verified from: docs/PRIVACY.md [On your device] -->
 
-There is no control to clear all ratings. Deleting the app removes its
-ratings and settings. Copies you exported and device backups are separate.
+There is no control to clear all ratings. **Clear history** in **History**
+removes saved workouts. Deleting the app removes its ratings,
+history and settings. Copies you exported and device backups are separate.
 <!-- Verified from: docs/PRIVACY.md [Removing data] -->
 
 ## Troubleshooting
@@ -472,9 +543,10 @@ ones of its type are left; if you rated it before, your rating is shown.
 
 ### Is My Workout Score Saved?
 
-No. The **Workout complete** score is shown at the end of the workout and is
-not stored. Only settings and ratings are saved.
-<!-- Verified from: platform/ios/text_math/WorkoutModel.swift [WorkoutSession] -->
+Yes. Each finished workout's score and solve time are saved to **History**.
+Workouts you end early are not saved.
+<!-- Verified from: platform/ios/text_math/WorkoutHistory.swift [WorkoutHistory] -->
+<!-- Verified from: platform/ios/text_math/WorkoutView.swift [advance] -->
 <!-- Verified from: docs/PRIVACY.md [On your device] -->
 
 ### Does Text Math Need an Account or Internet Connection?

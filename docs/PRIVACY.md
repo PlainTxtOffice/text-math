@@ -1,7 +1,7 @@
 ---
 privacy_updated:
-  ios: "2026-11-20"
-  android: "2026-11-20"
+  ios: "2026-11-26"
+  android: "2026-11-26"
 ---
 
 # Text Math privacy policy — publication draft
@@ -17,6 +17,10 @@ Workout settings and the latest 200 rated problem snapshots are stored locally
 in the app. Problems are generated on-device; ratings are not sent to an AI
 service.
 
+The app also keeps a history of the latest 200 finished workouts: the date, the
+workout, how many problems were solved and the solve time. Workouts ended early
+are not saved.
+
 ## Sharing
 
 Copy ratings writes your chosen export to the system clipboard. Share ratings
@@ -27,11 +31,14 @@ the copy under their own policies.
 
 Ratings can be replaced by rerating a problem, and older ratings are removed
 when the 200-rating limit is reached. This version has no clear-all ratings
-control. Deleting the app removes its local ratings and settings; copies you
-shared and device backups are separate.
+control. Deleting the app removes its local ratings, settings and workout
+history; copies you shared and device backups are separate.
 
-On iOS, iCloud and computer backups include the app's settings and ratings, and
-restoring a backup brings them back.
+**Clear history** in History removes every saved workout, and older workouts are
+removed when the 200-workout limit is reached.
+
+On iOS, iCloud and computer backups include the app's settings, ratings and
+workout history, and restoring a backup brings them back.
 
 On Android, clearing app storage also removes local data. Automatic Android
 backup and device transfer are disabled. Save ratings writes a JSON file to the
